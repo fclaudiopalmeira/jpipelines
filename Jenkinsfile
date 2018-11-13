@@ -21,6 +21,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh """
+                cd "$WORKSPACE"/UnitTests
                 dotnet test
                 """
             }
