@@ -45,7 +45,7 @@ pipeline {
         }
         stage('Build and Publish') {
             steps {
-             sh 'dotnet publish'' --configuration Release'   
+             sh 'dotnet publish --configuration Release'   
             }
         }
 
