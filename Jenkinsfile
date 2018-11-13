@@ -1,8 +1,12 @@
 //Declarative Pipeline
 pipeline {
     agent any
-
+    
     stages {
+        stage('Cloning Sources'){
+            git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld.git'
+    }
+        }
         stage('restoring') {
             steps {
                 sh 'dotnet restore'
@@ -30,5 +34,4 @@ pipeline {
                 to: "fclaudiopalmeira@gmail.com"
             )
         }   
-    }
-}    
+    }   
