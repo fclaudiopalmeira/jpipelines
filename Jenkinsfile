@@ -26,8 +26,7 @@ pipeline {
                 """
             }
         }
-    }
-    post {
+        post {
         success {
             emailext(
                 subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has been succesfully deployed.",
@@ -43,7 +42,6 @@ pipeline {
             )
         }  
     }
-    stages {
         stage('Build and Publish') {
             when {
                 branch 'master' //Avoiding other branches
@@ -53,4 +51,5 @@ pipeline {
             }
         }
     }
+    
 }
