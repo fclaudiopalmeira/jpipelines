@@ -8,7 +8,7 @@ pipeline {
                 git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld'
             }
         }
-        stage('Restore') {
+        stage('Restoring') {
             steps {
                 sh 'dotnet restore'
             }
@@ -18,7 +18,7 @@ pipeline {
                 sh 'dotnet build'
             }
         }
-        stage('Tests') {
+        stage('Test') {
             steps {
                 sh """
                 cd "$WORKSPACE"/UnitTests
@@ -30,7 +30,7 @@ pipeline {
     post {
         success {
             emailext(
-                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] passed all tests and has been succesfully deployed.",
+                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has been succesfully deployed.",
                 body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
                 to: "fclaudiopalmeira@gmail.com"
             )
@@ -39,8 +39,16 @@ pipeline {
             emailext(
                 subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has failed.",
                 body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
-                to: "brdarkmoon@gmail.com"
+                to: "fclaudiopalmeira@gmail.com"
             )
         }  
     }
+        stage('Build and Publish'){
+            when {
+                branch 'master' //Avoiding other branches
+            }
+            steps{
+             sh 'dotnet publish ~/published'   
+            }
+        }
 }
