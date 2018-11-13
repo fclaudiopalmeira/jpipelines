@@ -30,7 +30,7 @@ pipeline {
     post {
         success {
             emailext(
-                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has been succesfully deployed.",
+                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] passed all tests and has been succesfully deployed.",
                 body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
                 to: "fclaudiopalmeira@gmail.com"
             )
