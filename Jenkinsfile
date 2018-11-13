@@ -8,7 +8,7 @@ pipeline {
                 git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld'
             }
         }
-        stage('restoring') {
+        stage('Restore') {
             steps {
                 sh 'dotnet restore'
             }
@@ -18,7 +18,7 @@ pipeline {
                 sh 'dotnet build'
             }
         }
-        stage('Test') {
+        stage('Tests') {
             steps {
                 sh """
                 cd "$WORKSPACE"/UnitTests
