@@ -38,7 +38,7 @@ pipeline {
             emailext(
                 subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has failed.",
                 body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
-                to: "fclaudiopalmeira@gmail.com"
+                to: "brdarkmoon@gmail.com"
             )
         }  
     }
