@@ -45,7 +45,7 @@ pipeline {
         }
         stage('Build and Publish') {
             steps {
-             sh 'dotnet publish ~/published'   
+             sh 'dotnet publish'   
             }
         }
 
