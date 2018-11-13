@@ -4,7 +4,9 @@ pipeline {
     
     stages {
         stage('Cloning Sources'){
+            steps {
             git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld.git'
+            }
     }
         }
         stage('restoring') {
@@ -34,4 +36,4 @@ pipeline {
                 to: "fclaudiopalmeira@gmail.com"
             )
         }   
-    }   
+    }
