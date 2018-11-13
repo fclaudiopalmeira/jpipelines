@@ -29,9 +29,11 @@ pipeline {
     }
     post {
         success {
-            mail to: "fclaudiopalmeira@gmail.com"
-                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has been succesfully deployed."
-                body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] "
+            emailext(
+                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has been succesfully deployed.",
+                body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
+                to: "fclaudiopalmeira@gmail.com"
+            )
         } 
         failure{
             emailext(
