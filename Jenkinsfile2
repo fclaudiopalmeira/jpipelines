@@ -1,0 +1,54 @@
+//Declarative Pipeline
+pipeline {
+    agent any
+    
+    stages {
+        stage('Cloning Sources') {
+            steps {
+                git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld'
+            }
+        }
+        stage('Restoring') {
+            steps {
+                bat 'dotnet restore'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'dotnet build'
+            }
+        }
+        stage('Test') {
+            steps {
+                bat """
+                cd "$WORKSPACE"/UnitTests
+                dotnet test
+                """
+            }
+            post {
+                success {
+                    emailext(
+                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has been succesfully deployed.",
+                body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
+                to: "fclaudiopalmeira@gmail.com"
+            )
+                }
+                failure{
+            emailext(
+                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has failed.",
+                body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
+                to: "fclaudiopalmeira@gmail.com"
+            )
+        }
+
+            }
+        }
+        stage('Build and Publish') {
+            steps {
+             bat 'dotnet publish --configuration=Release -o pub'   
+            }
+        }
+
+    }
+            
+}
