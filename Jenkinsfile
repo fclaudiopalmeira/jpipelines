@@ -8,12 +8,12 @@ pipeline {
                 git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld'
             }
         }
-        stage('Restoring') {
+        stage('restoring') {
             steps {
                 sh 'dotnet restore'
             }
         }
-        stage('Building') {
+        stage('Build') {
             steps {
                 sh 'dotnet build'
             }
@@ -29,11 +29,16 @@ pipeline {
     }
     post {
         success {
-            emailext(
+            mail to: "fclaudiopalmeira@gmail.com"
                 subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has been succesfully deployed.",
+                body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] "
+        } 
+        failure{
+            emailext(
+                subject: "${env.JOB_NAME} on build [${env.BUILD_NUMBER}] has failed.",
                 body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
                 to: "fclaudiopalmeira@gmail.com"
             )
-        }   
+        }  
     }
 }
