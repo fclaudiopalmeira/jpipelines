@@ -44,9 +44,6 @@ pipeline {
         }  
     }
         stage('Build and Publish') {
-            when {
-                branch 'master' //Avoiding other branches
-            }
             steps {
              sh 'dotnet publish ~/published'   
             }
