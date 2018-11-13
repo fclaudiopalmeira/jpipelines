@@ -3,11 +3,10 @@ pipeline {
     agent any
     
     stages {
-        stage('Cloning Sources'){
+        stage('Cloning Sources') {
             steps {
-            git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld.git'
+                git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld'
             }
-    }
         }
         stage('restoring') {
             steps {
