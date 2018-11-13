@@ -8,7 +8,7 @@ pipeline {
                 git url: 'https://github.com/fclaudiopalmeira/dotnetcore-helloworld'
             }
         }
-        stage('restoring') {
+        stage('Restoring') {
             steps {
                 sh 'dotnet restore'
             }
