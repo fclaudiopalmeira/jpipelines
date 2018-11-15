@@ -62,7 +62,8 @@ pipeline {
             steps {
                 sh """
                 cd "$WORKSPACE"/serko/terraform
-                chmod +x ./*.sh
+                chmod +x ./init.sh
+                chmod +x ./apply.sh
                 ./init.sh
                 ./apply.sh
                 """  
