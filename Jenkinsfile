@@ -39,6 +39,7 @@ pipeline {
                 body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
                 to: "fclaudiopalmeira@gmail.com"
             )
+            error('Stopping the JOB!…')
         }
 
             }
