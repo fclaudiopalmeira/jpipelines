@@ -52,8 +52,7 @@ pipeline {
         stage('ECHO') {
             steps {
                 sh """
-                cd /home/ubuntu/serko
-                buildvm.sh
+                /home/ubuntu/serko/buildvm.sh
                 """   
             }
         }
