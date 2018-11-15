@@ -56,7 +56,10 @@ pipeline {
         }
         stage('ECHO2') {
             steps {
-             sh 'echo funciona 2'   
+                sh """
+                cd /home/ubuntu/target1
+                terraform init
+                """   
             }
         }
 
