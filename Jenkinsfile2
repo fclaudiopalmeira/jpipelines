@@ -10,17 +10,17 @@ pipeline {
         }
         stage('Restoring') {
             steps {
-                bat 'dotnet restore'
+                sh 'dotnet restore'
             }
         }
         stage('Build') {
             steps {
-                bat 'dotnet build'
+                sh 'dotnet build'
             }
         }
         stage('Test') {
             steps {
-                bat """
+                sh """
                 cd "$WORKSPACE"/UnitTests
                 dotnet test
                 """
@@ -39,13 +39,14 @@ pipeline {
                 body: "Please check the console output for ${env.JOB_NAME} on [${env.BUILD_URL}] ",
                 to: "fclaudiopalmeira@gmail.com"
             )
+            error('Stopping the JOB!…')
         }
 
             }
         }
         stage('Build and Publish') {
             steps {
-             bat 'dotnet publish --configuration=Release -o pub'   
+             sh 'dotnet publish --configuration=Release'   
             }
         }
 
