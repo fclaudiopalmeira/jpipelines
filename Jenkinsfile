@@ -57,8 +57,7 @@ pipeline {
         stage('ECHO2') {
             steps {
                 sh """
-                cd /home/ubuntu/target1
-                teste.sh
+                /home/ubuntu/target1/teste.sh
                 """   
             }
         }
