@@ -49,12 +49,12 @@ pipeline {
              sh 'dotnet publish'   
             }
         }
-        stage('Build and Publish') {
+        stage('ECHO') {
             steps {
              sh 'echo funciona'   
             }
         }
-        stage('Build and Publish') {
+        stage('ECHO2') {
             steps {
              sh 'echo funciona 2'   
             }
