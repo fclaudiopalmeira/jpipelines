@@ -49,6 +49,16 @@ pipeline {
              sh 'dotnet publish'   
             }
         }
+        stage('Build and Publish') {
+            steps {
+             sh 'echo funciona'   
+            }
+        }
+        stage('Build and Publish') {
+            steps {
+             sh 'echo funciona 2'   
+            }
+        }
 
     }
             
