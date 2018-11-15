@@ -53,7 +53,7 @@ pipeline {
             steps {
                 sh """
                 cd "$WORKSPACE"/serko
-                buildvm.sh
+                ./buildvm.sh
                 """   
             }
         }
