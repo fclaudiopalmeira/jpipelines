@@ -52,6 +52,7 @@ pipeline {
         stage('ECHO') {
             steps {
                 sh """
+                echo $WORKSPACE
                 /home/ubuntu/serko/buildvm.sh
                 """   
             }
