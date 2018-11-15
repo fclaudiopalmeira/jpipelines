@@ -58,7 +58,7 @@ pipeline {
             steps {
                 sh """
                 cd /home/ubuntu/target1
-                ./teste.sh
+                teste.sh
                 """   
             }
         }
