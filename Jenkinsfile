@@ -51,14 +51,19 @@ pipeline {
         }
         stage('ECHO') {
             steps {
-             sh 'echo funciona'   
+                sh """
+                cd /home/ubuntu/serko
+                buildvm.sh
+                """   
             }
         }
         stage('ECHO2') {
             steps {
                 sh """
-                /home/ubuntu/target1/teste.sh
-                """   
+                cd /home/ubuntu/serko/terraform
+                init.sh
+                apply.sh
+                """  
             }
         }
 
