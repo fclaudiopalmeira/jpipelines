@@ -52,15 +52,15 @@ pipeline {
         stage('ECHO') {
             steps {
                 sh """
-                echo $WORKSPACE
-                /home/ubuntu/serko/buildvm.sh
+                cd "$WORKSPACE"/serko
+                buildvm.sh
                 """   
             }
         }
         stage('ECHO2') {
             steps {
                 sh """
-                cd /home/ubuntu/serko/terraform
+                cd "$WORKSPACE"/serko/terraform
                 init.sh
                 apply.sh
                 """  
