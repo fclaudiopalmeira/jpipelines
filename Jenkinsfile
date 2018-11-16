@@ -55,21 +55,15 @@ pipeline {
                 cd "$WORKSPACE"/serko
                 chmod +x ./buildvm.sh
                 ./buildvm.sh
-                """   
-            }
-        }
-        stage('terraform') {
-            steps {
-                sh """
                 cd "$WORKSPACE"/serko/terraform
                 chmod +x ./init.sh
                 chmod +x ./apply.sh
                 ./init.sh
                 ./apply.sh
-                """  
+                """   
             }
         }
-
+        
     }
             
 }
