@@ -49,7 +49,7 @@ pipeline {
              sh 'dotnet publish --output "$WORKSPACE"/serkodrop/ansible/roles/applic/files'   
             }
         }
-        stage('ECHO') {
+        stage('Packer') {
             steps {
                 sh """
                 cd "$WORKSPACE"/serko
@@ -58,7 +58,7 @@ pipeline {
                 """   
             }
         }
-        stage('ECHO2') {
+        stage('terraform') {
             steps {
                 sh """
                 cd "$WORKSPACE"/serko/terraform
