@@ -46,7 +46,7 @@ pipeline {
         }
         stage('Build and Publish') {
             steps {
-             sh 'dotnet publish'   
+             sh 'dotnet publish --output "$WORKSPACE"/serkodrop/ansible/roles/applic/files'   
             }
         }
         stage('ECHO') {
